@@ -6,6 +6,8 @@
 // Le séquencage des prompts se fait en modifiant l'attribut 'onClick' du bouton 'actionButton' en passant la valeur de la fonction / exercice suivant.
 
 const outputDiv = document.getElementById("output");
+const userInput = document.getElementById("userInput");
+const actionButton = document.getElementById("actionButton");
 
 function appendMessage(message) {
 	outputDiv.innerHTML += `<p>${message}</p>`;
@@ -13,6 +15,12 @@ function appendMessage(message) {
 
 function clearOutput() {
 	outputDiv.innerHTML = "";
+}
+
+function getUserInput() {
+	let userChoice = userInput.value;
+	userInput.value = "";
+	return userChoice.trim();
 }
 
 // Exercice 1 : Définition de variables
@@ -39,9 +47,7 @@ appendMessage("1. Le nom de la boutique<br>2. Le nom du Sorcier<br>3. Le prix d'
 // Exercice 3 : Affichage conditionnel avec switch
 
 function giveInfos() {
-	userChoice = document.getElementById("userInput").value;
-	document.getElementById("userInput").value = "";
-	userChoice = userChoice.trim();
+	let userChoice = getUserInput();
 	switch (userChoice) {
 		case "1":
 			appendMessage(`Le nom de la boutique est ${shopName} !`);
@@ -56,10 +62,29 @@ function giveInfos() {
 			appendMessage(`La quantité restante de potions de soin est de ${healPotionCount}`);
 			break;
 		case "5":
-			clearOutput();
 			buyHealPotion();
 			break;
 		default:
 			appendMessage("Mh... Désolé aventurier, je ne comprends pas ce que tu souhaites. Refais ton choix !");
+	}
+}
+
+// Exercice 4 : Calcul du prix total d'une commande de potion
+
+function buyHealPotion() {
+	clearOutput();
+	appendMessage("Combien de potions de soin souhaites-tu ? 🤔");
+	actionButton.setAttribute("onclick", "givePotionsPrice()");
+}
+
+function givePotionsPrice() {
+	let potionQuantity = parseInt(getUserInput());
+	console.log(potionQuantity);
+
+	if (isNaN(potionQuantity) || potionQuantity <= 0) {
+		appendMessage("Mh... Désolé aventurier, je ne comprends pas ce que tu souhaites. Refais ton choix !");
+	} else {
+		appendMessage(`Prix de ${potionQuantity} potions de soins : ${potionQuantity * healPotionPrice} 🪙 mon cher Aventurier. 💸`);
+		actionButton.setAttribute("onclick", "askMoneyAmount()");
 	}
 }
