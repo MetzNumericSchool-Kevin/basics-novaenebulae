@@ -20,6 +20,10 @@ function getUserInput(type = "string") {
 		function handleInput() {
 			let value = userInput.value.trim();
 			userInput.value = "";
+			if (type === "null") {
+				cleanup();
+				resolve(value);
+			}
 
 			if (type === "int") {
 				let numValue = parseInt(value);
@@ -71,7 +75,6 @@ let isShopOpen = true;
 
 // Boucle principale avec async car utilisation de await pour getUserInput :
 async function main() {
-
 	// Exercice 2 : Affichage conditionnel :
 
 	if (isShopOpen) {
@@ -160,12 +163,21 @@ async function main() {
 			validateSell = true;
 		}
 	} while (isNaN(desiredPotionQuantity) || desiredPotionQuantity <= 0 || !validateSell);
+	appendMessage("Appuie sur une touche pour continuer...");
+	let waitUserInput = await getUserInput("null");
+	clearOutput();
 
-// Exercice 5 : Liste des potions : 
+	// Exercice 5 : Liste des potions :
 
-let potionNames = ["Potion de soin", "Potion de dégats", "Potion d'invisibilité"];
-console.log(potionNames);
+	let potionNames = ["potion de soin", "potion de dégats", "potion d'invisibilité"];
+	console.log(potionNames);
 
+	// Exercice 6 : Affichage des potions :
+
+	appendMessage(`Le nom de la première potion est ${potionNames[0]}.`);
+	appendMessage(`Le nom de la dernière potion est ${potionNames[potionNames.length - 1]}.`);
+
+	potionNames.forEach((element) => appendMessage(`Nous avons de la ${element} !`));
 }
 
 // Lancement du programme
