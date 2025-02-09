@@ -234,7 +234,7 @@ async function main() {
 
 	await nextScreen();
 
-	// Exercice 10 : C'est l'heure de faire l'inventaire :
+	// Exercice 10 : C'est l'heure de faire l'inventaire...
 
 	async function createInventory() {
 		let newInventory = [];
@@ -253,9 +253,43 @@ async function main() {
 		return newInventory;
 	}
 
-	let inventory = createInventory();
+	let inventory = await createInventory();
 	appendMessage("Inventaire crée avec succès !");
 	console.log(inventory);
+
+	await nextScreen();
+
+	// Exercice 11 : Aventurier, regarde tout ce que je vends !
+
+	appendMessage("Affichage de l'inventaire (avec notation pointée) : ");
+
+	inventory.forEach(function(potion) {
+		appendMessage(`Potion ${inventory.indexOf(potion) + 1} :`);
+		appendMessage(`Nom : ${potion.potionName}`);
+		appendMessage(`Prix : ${potion.potionPrice}`);
+		appendMessage(`Stock : ${potion.potionStock}`);
+		appendMessage(`<br>`);
+
+	});
+
+	await nextScreen();
+
+	appendMessage("Affichage de l'inventaire (sans notation pointée) : ");
+
+	inventory.forEach(function(potion) {
+
+		appendMessage(`Potion ${inventory.indexOf(potion) + 1} :`);
+
+		for (let [paramName, param] of Object.entries(potion)) {
+			appendMessage(`${paramName} : ${param}`);
+		}
+
+		appendMessage(`<br>`);
+	});
+
+	await nextScreen();
+
+	appendMessage("Fin de la première partie des exercices !");
 }
 
 // Lancement du programme
