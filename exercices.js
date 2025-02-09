@@ -71,7 +71,7 @@ let isShopOpen = true;
 
 // Boucle principale avec async car utilisation de await pour getUserInput :
 async function main() {
-    
+
 	// Exercice 2 : Affichage conditionnel :
 
 	if (isShopOpen) {
@@ -160,6 +160,12 @@ async function main() {
 			validateSell = true;
 		}
 	} while (isNaN(desiredPotionQuantity) || desiredPotionQuantity <= 0 || !validateSell);
+
+// Exercice 5 : Liste des potions : 
+
+let potionNames = ["Potion de soin", "Potion de dégats", "Potion d'invisibilité"];
+console.log(potionNames);
+
 }
 
 // Lancement du programme
