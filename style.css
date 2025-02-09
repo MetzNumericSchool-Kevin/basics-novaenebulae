@@ -3,19 +3,23 @@ body {
 	background: linear-gradient(135deg, #0a0a2a, #1e0038, #060017);
 	color: #c0c0c0;
 	text-align: left;
-	padding: 20px;
-	height: 100vh;
-	width: 70vw;
 	margin: 0 10vw;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 }
 
+#container {
+    min-height: 100dvh;
+    width: 70vw;
+}
+
 h1 {
 	color: #d4af37;
 	font-family: "Uncial Antiqua", cursive;
 	text-shadow: 0 0 10px rgba(212, 175, 55, 0.7);
+    text-align: center;
+    margin: 50px 0;
 }
 
 /* 📜 Zone de dialogue */
@@ -33,7 +37,7 @@ h1 {
 #inputDiv {
 	width: 100%;
 	display: flex;
-	justify-content: center;
+	justify-content: left;
 	gap: 20px;
 }
 
