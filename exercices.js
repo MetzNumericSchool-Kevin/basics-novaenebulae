@@ -224,6 +224,13 @@ async function main() {
 	}
 
 	let potion = await addPotion();
+
+	// Exercice 10 : Affichons les informations de la potion :
+
+	clearOutput();
+	appendMessage("Potion ajoutée :");
+	appendMessage(`Nom : ${potion.potionName}`);
+	appendMessage(`Prix : ${potion.potionPrice}`);
 }
 
 // Lancement du programme
