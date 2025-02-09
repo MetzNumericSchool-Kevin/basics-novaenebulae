@@ -203,7 +203,27 @@ async function main() {
 	appendMessage("Suppression de la dernière potion.<br><br>Nouvelle liste :");
 	potionNames.forEach((element) => appendMessage(`Potion ${potionNames.indexOf(element) + 1}. ${element}`));
 
-    await nextScreen();
+	await nextScreen();
+
+	// Exercice 9 : Rangeons les informations de la potion de soin dans un objet :
+
+	async function addPotion() {
+		let potion = {};
+
+		appendMessage("Quel est le nom de la potion ?");
+		potion.potionName = await getUserInput();
+
+		appendMessage("Quel est le prix de la potion ?");
+		potion.potionPrice = await getUserInput("int");
+
+		appendMessage("Quel est le nombre de potions en stock ?");
+		potion.potionStock = await getUserInput("int");
+
+		console.log(potion);
+		return potion;
+	}
+
+	let potion = await addPotion();
 }
 
 // Lancement du programme
