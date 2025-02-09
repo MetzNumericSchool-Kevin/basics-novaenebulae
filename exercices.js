@@ -207,23 +207,23 @@ async function main() {
 
 	// Exercice 9 : Rangeons les informations de la potion de soin dans un objet :
 
-	async function addPotion() {
-		let potion = {};
+	async function createPotion() {
+		let newPotion = {};
 
 		appendMessage("Quel est le nom de la potion ?");
-		potion.potionName = await getUserInput();
+		newPotion.potionName = await getUserInput();
 
 		appendMessage("Quel est le prix de la potion ?");
-		potion.potionPrice = await getUserInput("int");
+		newPotion.potionPrice = await getUserInput("int");
 
 		appendMessage("Quel est le nombre de potions en stock ?");
-		potion.potionStock = await getUserInput("int");
+		newPotion.potionStock = await getUserInput("int");
 
-		console.log(potion);
-		return potion;
+		console.log(newPotion);
+		return newPotion;
 	}
 
-	let potion = await addPotion();
+	let potion = await createPotion();
 
 	// Exercice 10 : Affichons les informations de la potion :
 
@@ -231,6 +231,31 @@ async function main() {
 	appendMessage("Potion ajoutée :");
 	appendMessage(`Nom : ${potion.potionName}`);
 	appendMessage(`Prix : ${potion.potionPrice}`);
+
+	await nextScreen();
+
+	// Exercice 10 : C'est l'heure de faire l'inventaire :
+
+	async function createInventory() {
+		let newInventory = [];
+
+		appendMessage("Combien de potions ajouter ?");
+
+		let numberPotionAdd = await getUserInput("int");
+
+		for (let i = 1; i <= numberPotionAdd; i++) {
+			clearOutput();
+			appendMessage(`Ajout de la potion ${i} :`);
+			newPotion = await createPotion();
+			newInventory.push(newPotion);
+		}
+		clearOutput();
+		return newInventory;
+	}
+
+	let inventory = createInventory();
+	appendMessage("Inventaire crée avec succès !");
+	console.log(inventory);
 }
 
 // Lancement du programme
