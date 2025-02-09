@@ -14,11 +14,18 @@ function clearOutput() {
 	outputDiv.innerHTML = "";
 }
 
+async function nextScreen() {
+	appendMessage("Appuie sur une touche pour continuer...");
+	await getUserInput("null");
+	clearOutput();
+}
+
 // Fonction pour récupérer une entrée utilisateur avec vérification
 function getUserInput(type = "string") {
 	return new Promise((resolve) => {
 		function handleInput() {
 			let value = userInput.value.trim();
+			appendMessage(value);
 			userInput.value = "";
 			if (type === "null") {
 				cleanup();
@@ -163,9 +170,8 @@ async function main() {
 			validateSell = true;
 		}
 	} while (isNaN(desiredPotionQuantity) || desiredPotionQuantity <= 0 || !validateSell);
-	appendMessage("Appuie sur une touche pour continuer...");
-	let waitUserInput = await getUserInput("null");
-	clearOutput();
+
+	await nextScreen();
 
 	// Exercice 5 : Liste des potions :
 
@@ -178,6 +184,26 @@ async function main() {
 	appendMessage(`Le nom de la dernière potion est ${potionNames[potionNames.length - 1]}.`);
 
 	potionNames.forEach((element) => appendMessage(`Nous avons de la ${element} !`));
+
+	await nextScreen();
+
+	// Exercice 7 - 8 : Ajout / suppression d'une nouvelle potion :
+
+	appendMessage("Ajout d'une nouvelle potion<br><br>Quel est le nom de la potion ?");
+
+	let newPotionName = await getUserInput();
+	potionNames.push(newPotionName);
+
+	appendMessage("Liste des potions :");
+	potionNames.forEach((element) => appendMessage(`Potion ${potionNames.indexOf(element) + 1}. ${element}`));
+
+	await nextScreen();
+
+	potionNames.pop();
+	appendMessage("Suppression de la dernière potion.<br><br>Nouvelle liste :");
+	potionNames.forEach((element) => appendMessage(`Potion ${potionNames.indexOf(element) + 1}. ${element}`));
+
+    await nextScreen();
 }
 
 // Lancement du programme
