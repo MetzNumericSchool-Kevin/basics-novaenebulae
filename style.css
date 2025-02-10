@@ -12,6 +12,15 @@ body {
 #container {
     min-height: 100dvh;
     width: 70vw;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
+#button-container {
+	display: flex;
+	gap: 50px;
 }
 
 h1 {
@@ -19,52 +28,24 @@ h1 {
 	font-family: "Uncial Antiqua", cursive;
 	text-shadow: 0 0 10px rgba(212, 175, 55, 0.7);
     text-align: center;
+	font-size: 80px;
     margin: 50px 0;
 }
 
-/* 📜 Zone de dialogue */
-#output {
+#actionButton {
 	font-family: "M PLUS Code Latin";
-	background: rgba(20, 20, 40, 0.8);
-	border: 2px solid #d4af37;
-	padding: 40px;
-	min-height: 120px;
-	width: 100%;
-	box-shadow: 0 0 15px rgba(212, 175, 55, 0.3);
-	margin: 25px 0;
-}
-
-#inputDiv {
-	width: 100%;
-	display: flex;
-	justify-content: left;
-	gap: 20px;
-}
-
-/* 🔮 Champ de texte et bouton */
-input,
-button {
-	font-size: 18px;
+	text-decoration: none;
+	font-size: 50px;
 	border: 2px solid #d4af37;
 	padding: 10px;
 	border-radius: 5px;
 	background: #1b1b3a;
 	color: #c0c0c0;
 	transition: 0.3s ease-in-out;
+
 }
 
-input::placeholder {
-	color: #a0a0a0;
-}
-
-button {
-	cursor: pointer;
-	background: #2e004f;
-	color: #d4af37;
-	box-shadow: 0 0 8px rgba(212, 175, 55, 0.5);
-}
-
-button:hover {
+#actionButton:hover {
 	background: #42006e;
 	box-shadow: 0 0 15px rgba(212, 175, 55, 0.8);
 }
