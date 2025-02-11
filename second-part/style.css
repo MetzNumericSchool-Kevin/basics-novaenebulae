@@ -1,51 +1,53 @@
-/* 🌌 Arrière-plan mystique */
 body {
 	background: linear-gradient(135deg, #0a0a2a, #1e0038, #060017);
 	color: #c0c0c0;
-	text-align: left;
-	margin: 0 10vw;
+	text-align: center;
+	margin: 0;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+	justify-content: center;
+	min-height: 100vh;
+}
+
+#container {
+	width: 90%;
+	height: 90vh;
+	max-width: 900px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: flex-start;
+	padding: 20px;
 }
 
 #header {
 	display: flex;
 	justify-content: space-between;
-    align-items: center;
-}
-
-#purseCounter {
-	display: flex;
-	justify-content: space-evenly;
+	align-items: center;
 	width: 100%;
-}
-
-#container {
-    min-height: 100dvh;
-    width: 70vw;
+	flex-wrap: wrap;
 }
 
 h1 {
 	color: #d4af37;
 	font-family: "Uncial Antiqua", cursive;
 	text-shadow: 0 0 10px rgba(212, 175, 55, 0.7);
-    text-align: center;
-    margin: 50px 0;
-	width: 100%;
+	text-align: center;
+	font-size: 3rem;
+	margin: 30px 0;
 }
 
 #returnButton {
 	font-family: "M PLUS Code Latin";
 	text-decoration: none;
-	font-size: 20px;
+	font-size: 1.2rem;
 	border: 2px solid #d4af37;
 	padding: 10px 20px;
 	border-radius: 5px;
 	background: #1b1b3a;
 	color: #c0c0c0;
 	transition: 0.3s ease-in-out;
-
 }
 
 #returnButton:hover {
@@ -53,29 +55,37 @@ h1 {
 	box-shadow: 0 0 15px rgba(212, 175, 55, 0.8);
 }
 
-/* 📜 Zone de dialogue */
+#purseCounter {
+	display: flex;
+	justify-content: space-evenly;
+	width: 100%;
+	flex-wrap: wrap;
+	gap: 10px;
+}
+
 #output {
 	font-family: "M PLUS Code Latin";
 	background: rgba(20, 20, 40, 0.8);
 	border: 2px solid #d4af37;
-	padding: 40px;
-	min-height: 120px;
-	width: 100%;
+	padding: 30px;
+	height: auto;
+	width: 95%;
 	box-shadow: 0 0 15px rgba(212, 175, 55, 0.3);
 	margin: 25px 0;
+	text-align: left;
 }
 
 #inputDiv {
 	width: 100%;
 	display: flex;
-	justify-content: left;
-	gap: 20px;
+	justify-content: center;
+	gap: 15px;
+	flex-wrap: wrap;
 }
 
-/* 🔮 Champ de texte et bouton */
 input,
 button {
-	font-size: 18px;
+	font-size: 1rem;
 	border: 2px solid #d4af37;
 	padding: 10px;
 	border-radius: 5px;
@@ -98,4 +108,64 @@ button {
 button:hover {
 	background: #42006e;
 	box-shadow: 0 0 15px rgba(212, 175, 55, 0.8);
+}
+
+@media (max-width: 768px) {
+	h1 {
+		font-size: 2.5rem;
+	}
+
+	#output {
+		padding: 10px;
+		text-align: center;
+	}
+
+	#header {
+		flex-direction: row;
+		align-items: center;
+		gap: 15px;
+		
+	}
+
+	#purseCounter {
+		margin: 20px 0px 0px 20px;
+	}
+
+	#returnButton {
+		font-size: 1rem;
+		padding: 8px 15px;
+	}
+
+	#inputDiv {
+		flex-direction: column;
+		align-items: center;
+	}
+
+	input,
+	button {
+		width: 90%;
+		font-size: 1rem;
+	}
+}
+
+@media (max-width: 480px) {
+	h1 {
+		font-size: 1.5rem;
+		margin: 20px 5px 0px 5px;
+	}
+
+	h2 {
+		font-size: 1rem;
+		margin: 0px;
+	}
+
+	#returnButton {
+		font-size: 0.9rem;
+		padding: 6px 12px;
+	}
+
+	input,
+	button {
+		font-size: 0.9rem;
+	}
 }
