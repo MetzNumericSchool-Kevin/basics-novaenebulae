@@ -152,8 +152,6 @@ async function main() {
 				appendMessage("Je ne comprends pas. Recommence !");
 		}
 
-		purseCounter.innerHTML = `<h2>Bourse aventurier : ${adventurerPurseAmount}${coinEmote}</h2>
-		<h2>Bourse sorcier : ${sorcererPurseAmount}${coinEmote}</h2>`;
 	}
 
 	clearOutput();
@@ -240,6 +238,8 @@ async function main() {
 			sorcererPurseAmount += 5;
 		}
 
+		purseCounter.innerHTML = `<h2>Bourse aventurier : ${adventurerPurseAmount}${coinEmote}</h2>
+		<h2>Bourse sorcier : ${sorcererPurseAmount}${coinEmote}</h2>`;
 		await nextScreen();
 	}
 
@@ -307,6 +307,9 @@ async function main() {
 			selectedPotion.stock -= potionQuantityChoice;
 
 			updateAdventurerInventory(selectedPotion, potionQuantityChoice);
+
+			purseCounter.innerHTML = `<h2>Bourse aventurier : ${adventurerPurseAmount}${coinEmote}</h2>
+		<h2>Bourse sorcier : ${sorcererPurseAmount}${coinEmote}</h2>`;
 
 			appendMessage(`💰 Il te reste ${adventurerPurseAmount} ${coinEmote}`);
 			appendMessage(`🧙‍♂️ Le sorcier a maintenant ${sorcererPurseAmount} ${coinEmote}`);
